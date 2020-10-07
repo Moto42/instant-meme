@@ -7,12 +7,21 @@ const commonHandlers = {
   },
 };
 
-function sendMeme(req, res, next) {
-  res.send('');
+
+
+function memeHandler(req, res, next) {
+  const memeName = req.param('memeName');
+  console.log(req.params);
+  if(!memeName) {
+    res.status(400).json({message: 'No meme template specified'});
+  }
+  else {
+    res.send('');
+  }
 }
 
 router.route('/:memeName?')
-  .get(sendMeme)
+  .get(memeHandler)
   .post(commonHandlers.e405)
   .put(commonHandlers.e405)
   .delete(commonHandlers.e405);
