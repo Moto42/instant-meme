@@ -1,36 +1,69 @@
 const app = require('./index');
 const {mwsupertest} = require('middleware-supertest');
-const { it, describe, expect } = require('@jest/globals');
+const { test, describe, expect } = require('@jest/globals');
 
 
 
 describe('should only accept GET requests', () => {
-  it('rejects POST', async (done) => {
+  test('rejects POST', async (done) => {
     const res = await mwsupertest(app)
       .post('/')
       .send('')
       .expect(405);
     done();
   });
-  it('rejects PUT', async (done) => {
+  test('rejects PUT', async (done) => {
     const res = await mwsupertest(app)
       .put('/')
       .send('')
       .expect(405);
     done();
   });
-  it('rejects DELETE', async (done) => {
+  test('rejects DELETE', async (done) => {
     const res = await mwsupertest(app)
       .delete('/')
       .send('')
       .expect(405);
     done();
   });
-  it('does not 405 GET', async (done) => {
+  test('does not 405 GET', async (done) => {
     const res = await mwsupertest(app)
       .get('/')
       .send('');
     expect(res.status).toEqual(200);
+    done();
+  });
+});
+
+describe('Rejects requests that do not specify a meme template', () => {
+  test('/', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+      .expect(400);
+    done();
+  });
+  test('/?t1=watermellons', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+      .query({
+        t1: 'watermellons',
+      })
+      .expect(400);
+  done();
+  });
+  test('/testmeme', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+    expect(res.status).not.toEqual(400);
+    done();
+  });
+  test('/testmeme?t1=watermellons', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+      .query({
+        t1: 'watermellons',
+      })
+    expect(res.status).not.toEqual(400);
     done();
   });
 });
