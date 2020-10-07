@@ -23,6 +23,7 @@
   },
   "homepage": "https://github.com/Moto42/instant-meme#readme",
   "dependencies": {
+    "dotenv": "^8.2.0",
     "express": "^4.17.1"
   }
 }
