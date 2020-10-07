@@ -25,5 +25,9 @@
   "homepage": "https://github.com/Moto42/instant-meme#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.2",
+    "supertest": "^5.0.0"
   }
 }
