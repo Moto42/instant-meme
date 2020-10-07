@@ -53,13 +53,13 @@ describe('Rejects requests that do not specify a meme template', () => {
   });
   test('/testmeme', async (done) => {
     const res = await mwsupertest(app)
-      .get('/')
+      .get('/testmeme')
     expect(res.status).not.toEqual(400);
     done();
   });
   test('/testmeme?t1=watermellons', async (done) => {
     const res = await mwsupertest(app)
-      .get('/')
+      .get('/testmeme?t1=watermellons')
       .query({
         t1: 'watermellons',
       })
