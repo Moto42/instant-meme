@@ -4,7 +4,7 @@
   "description": "A express middleware to build 'memes' on the fly by specifying the image and text content in the url. Because photoshop is to slow for conversation.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -29,5 +29,11 @@
   "devDependencies": {
     "jest": "^26.5.2",
     "supertest": "^5.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
