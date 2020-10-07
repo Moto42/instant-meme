@@ -30,7 +30,7 @@ describe('should only accept GET requests', () => {
     const res = await mwsupertest(app)
       .get('/')
       .send('');
-    expect(res.status).toEqual(200);
+    expect(res.status).not.toEqual(405);
     done();
   });
 });
