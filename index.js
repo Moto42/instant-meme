@@ -11,7 +11,6 @@ const commonHandlers = {
 
 function memeHandler(req, res, next) {
   const memeName = req.param('memeName');
-  console.log(req.params);
   if(!memeName) {
     res.status(400).json({message: 'No meme template specified'});
   }
