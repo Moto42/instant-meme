@@ -47,6 +47,16 @@ test('can be built with specified values', () => {
   expect(mt.h).toEqual(h);
 });
 
+test('can be built from object', () => {
+  const {text, x, y, w, h} = testData;
+  const mt = new MemeText(testData);
+  expect(mt.text).toEqual(text);
+  expect(mt.x).toEqual(x);
+  expect(mt.y).toEqual(y);
+  expect(mt.w).toEqual(w);
+  expect(mt.h).toEqual(h);
+});
+
 describe('MemeText.fromObject', () => {
   test('does not crash', () => {
     expect( ()=> {const mt = MemeText.fromObject(testData)} ).not.toThrow();
