@@ -1,5 +1,5 @@
 const { test } = require("@jest/globals");
-const memebuilder = require('./memebuilder');
+const MemeBuilder = require('./MemeBuilder');
 
 const testData = {
   template: 'testmeme.png',
@@ -17,4 +17,6 @@ const testData = {
   }
 }
 
-test.todo('tests');
+test('runs without crashing', () => {
+  expect(()=>{const m = MemeBuilder(testData)}).not.toThrow();
+});
