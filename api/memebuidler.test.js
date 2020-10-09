@@ -5,7 +5,7 @@ const testData = {
   template: 'test-meme.png',
   texts: {
     t1: {
-      text: 'strawberrry',
+      text: 'nuts',
       x: 10,
       y: 20,
     },
@@ -17,6 +17,12 @@ const testData = {
   }
 }
 
-test('runs without crashing', () => {
-  expect(()=>{const m = MemeBuilder(testData)}).not.toThrow();
+test('runs without crashing', async (done) => {  
+  await expect(()=>MemeBuilder(testData).then( ()=>done() ) ).not.toThrow();
 });
+
+
+var fs = require("fs");
+MemeBuilder(testData)
+  .then(buf => fs.writeFileSync("test.png", buf));
+
