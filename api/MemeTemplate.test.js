@@ -47,3 +47,9 @@ describe('MemeTemplate.fromObject()', () => {
     expect(mt).toHaveProperty('texts', testData.texts);
   });
 });
+
+test('MemeTemplate.prototype.getTexts()', () => {
+  const mt = new MemeTemplate(testData);
+  const texts = mt.getTexts();
+  expect(texts).toEqual(expect.arrayContaining([testData.texts.t1]));
+});

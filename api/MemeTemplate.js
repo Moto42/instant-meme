@@ -6,6 +6,10 @@ function MemeTemplate(template=null, texts={}) {
   }
 }
 
+MemeTemplate.prototype.getTexts = function () {
+  return Object.values(this.texts);
+}
+
 MemeTemplate.fromObject = function (obj) {
   return Object.assign(new MemeTemplate, obj);
 }
