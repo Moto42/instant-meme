@@ -7,10 +7,8 @@ const commonHandlers = {
   },
 };
 
-
-
 function memeHandler(req, res, next) {
-  const memeName = req.param('memeName');
+  const memeName = req.params['memeName'];
   if(!memeName) {
     res.status(400).json({message: 'No meme template specified'});
   }
@@ -24,6 +22,5 @@ router.route('/:memeName?')
   .post(commonHandlers.e405)
   .put(commonHandlers.e405)
   .delete(commonHandlers.e405);
-
 
 module.exports = router;
