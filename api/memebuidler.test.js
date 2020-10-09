@@ -2,7 +2,7 @@ const { test } = require("@jest/globals");
 const MemeBuilder = require('./MemeBuilder');
 
 const testData = {
-  template: 'testmeme.png',
+  template: 'test-meme.png',
   texts: {
     t1: {
       text: 'strawberrry',
