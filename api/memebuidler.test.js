@@ -1,5 +1,10 @@
 const { test } = require("@jest/globals");
+const {toMatchImageSnapshot} = require('jest-image-snapshot');
 const MemeBuilder = require('./MemeBuilder');
+
+expect.extend({
+  toMatchImageSnapshot,
+});
 
 const testData = {
   template: 'test-meme.png',
@@ -23,8 +28,8 @@ test('runs without crashing', async (done) => {
   await expect(()=>MemeBuilder(testData).then( ()=>done() ) ).not.toThrow();
 });
 
-
-var fs = require("fs");
-MemeBuilder(testData)
-  .then(buf => fs.writeFileSync("test.png", buf));
-
+test('regression testing', async (done) => {
+  MemeBuilder(testData)
+    .then((image)=>{ expect(image).toMatchImageSnapshot(); })
+    .then(() => { done() })
+});
