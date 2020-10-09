@@ -1,10 +1,10 @@
 {
   "name": "instant-meme",
   "version": "0.0.1",
-  "description": "A service to build 'memes' on the fly by specifying the image and text content in the url. Because photoshop is to slow for conversation.",
+  "description": "A express middleware to build 'memes' on the fly by specifying the image and text content in the url. Because photoshop is to slow for conversation.",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest"
   },
   "repository": {
     "type": "git",
@@ -14,7 +14,8 @@
     "node",
     "d3",
     "memes",
-    "javascript"
+    "javascript",
+    "express"
   ],
   "author": "Wesley Williams",
   "license": "ISC",
@@ -23,6 +24,18 @@
   },
   "homepage": "https://github.com/Moto42/instant-meme#readme",
   "dependencies": {
+    "canvas": "^2.6.1",
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "jest": "^26.5.2",
+    "middleware-supertest": "^0.8.0",
+    "supertest": "^5.0.0"
+  },
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
   }
 }
