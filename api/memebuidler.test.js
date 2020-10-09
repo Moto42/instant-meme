@@ -14,7 +14,9 @@ const testData = {
       x: 30,
       y: 50,
     }
-  }
+  },
+  font: 'OpenSans-Regular.ttf',
+  font_size: '30px',
 }
 
 test('runs without crashing', async (done) => {  
