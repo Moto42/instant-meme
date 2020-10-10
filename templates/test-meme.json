@@ -1,0 +1,14 @@
+{
+  "template": "test-meme.png",
+  "texts" : {
+    "t1": {
+      "text":"",
+      "x": 10,
+      "y": 20,
+      "h": 100,
+      "w": 200
+    },
+    font: "OpenSans-Regular.ttf",
+    "font_size": "30px"
+  }
+}
