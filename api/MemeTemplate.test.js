@@ -11,6 +11,8 @@ const testData = {
       h: 100,
       w: 200,
     },
+    font: 'OpenSans-Regular.ttf',
+    font_size: '30px',
   },
 }
 
