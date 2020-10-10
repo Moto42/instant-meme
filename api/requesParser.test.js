@@ -41,4 +41,11 @@ describe('Parses requests correctly', () => {
         done();
       });
   });
+  test('url encoded', async (done) => {
+    requestParser(mockRequest_encoded)
+      .then(response => {
+        expect(response).toEqual(testData);
+        done();
+      });
+  });
 });
