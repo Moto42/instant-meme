@@ -83,7 +83,7 @@ test('404s a missing meme', async (done) => {
 describe('regression testing', () => {
   test('test-meme "cherries"', async (done) => {
     const res = await mwsupertest(app)
-      .get('/test-meme?t1=cherriess')
+      .get('/test-meme')
       .query({
         t1: 'cherriess',
       });
@@ -92,7 +92,7 @@ describe('regression testing', () => {
   });
   test('test-meme "strawberry"', async (done) => {
     const res = await mwsupertest(app)
-      .get('/test-meme?t1=strawberrys')
+      .get('/test-meme')
       .query({
         t1: 'strawberrys',
       });
