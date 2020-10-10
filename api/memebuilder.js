@@ -6,7 +6,8 @@ const { createCanvas, loadImage, registerFont } = require('canvas')
  * @returns {ReadableStream} readable stream of PNG file.
  */
 async function MemeBuilder(templateData){
-  registerFont(`fonts/${templateData.font}`,{family: "daFont"});
+  const fontFile = templateData.font || 'OpenSans-Regular.ttf';
+  registerFont(`fonts/${fontFile}`,{family: "daFont"});
   const image = await loadImage(`templates/${templateData.template}`);
   const canvas = createCanvas(image.naturalWidth,image.naturalHeight, 'png');
   const ctx = canvas.getContext('2d');
