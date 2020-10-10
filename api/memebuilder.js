@@ -3,7 +3,7 @@ const { createCanvas, loadImage, registerFont } = require('canvas')
 /**
  * 
  * @param {TemplateData} templateData 
- * @returns {ReadableStream} readable stream of PNG file.
+ * @returns {Buffer} readable Buffer of PNG file.
  */
 async function MemeBuilder(templateData){
   const fontFile = templateData.font || 'OpenSans-Regular.ttf';
