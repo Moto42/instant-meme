@@ -2,18 +2,18 @@ const { response } = require('express');
 const requestParser = require('./requestParser');
 
 const testData = {
-  template : 'test-meme.png',
-  texts : {
-    t1: {
-      text:'watermellon iced tea',
-      x: 10,
-      y: 20,
-      h: 100,
-      w: 200,
-    },
-    font: 'OpenSans-Regular.ttf',
-    font_size: '30px',
+  "template": "test-meme.png",
+  "texts" : {
+    "t1": {
+      "text":"watermellon iced tea",
+      "x": 10,
+      "y": 20,
+      "h": 100,
+      "w": 200
+    }
   },
+  "font": "OpenSans-Regular.ttf",
+  "font_size": "30px"
 }
 
 const mockRequest_plain = {
