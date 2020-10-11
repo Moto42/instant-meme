@@ -6,7 +6,7 @@ const fs = require('fs');
 
 module.exports = async function (req) {
   const fileName = `${req.params.memeName}.json`;
-  const json = await fs.promises.readFile(`templates/${fileName}`, 'utf-8');
+  const json = await fs.promises.readFile(`instant-meme/templates/${fileName}`, 'utf-8');
   let obj = JSON.parse(json);
   
   const texts = Object.entries(req.query).filter(e => /^t\d/.test(e[0]));

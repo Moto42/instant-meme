@@ -7,8 +7,8 @@ const { createCanvas, loadImage, registerFont } = require('canvas')
  */
 async function MemeBuilder(templateData){
   const fontFile = templateData.font || 'OpenSans-Regular.ttf';
-  registerFont(`fonts/${fontFile}`,{family: "daFont"});
-  const image = await loadImage(`templates/${templateData.template}`);
+  registerFont(`instant-meme/fonts/${fontFile}`,{family: "daFont"});
+  const image = await loadImage(`instant-meme/templates/${templateData.template}`);
   const canvas = createCanvas(image.naturalWidth,image.naturalHeight, 'png');
   const ctx = canvas.getContext('2d');
   ctx.font = `${templateData.font_size} "daFont"`;
