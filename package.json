@@ -1,6 +1,6 @@
 {
   "name": "instant-meme",
-  "version": "2.1.0",
+  "version": "2.2.0",
   "description": "A express middleware to build 'memes' on the fly by specifying the image and text content in the url. Because photoshop is to slow for conversation.",
   "main": "index.js",
   "scripts": {
