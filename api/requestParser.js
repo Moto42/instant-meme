@@ -2,10 +2,12 @@
  * This bit parses a request and ;returns a memetemplate
  */
 
+const {stripPNG} = require('../randomHelpers');
 const fs = require('fs');
 
 module.exports = async function (req) {
-  const fileName = `${req.params.memeName}.json`;
+  const memeName = stripPNG(req.params.memeName);
+  const fileName = `${memeName}.json`;
   const json = await fs.promises.readFile(`instant-meme/templates/${fileName}`, 'utf-8');
   let obj = JSON.parse(json);
   

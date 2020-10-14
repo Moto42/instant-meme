@@ -49,3 +49,18 @@ describe('Parses requests correctly', () => {
       });
   });
 });
+
+test('memenames ending in .png and not are equal', async (done) => {
+  const mock_request__yes_png = {
+    params : {memeName: 'test-meme.png'},
+    query: {t1: 'celery'},
+  };
+  const mock_request__no_png = {
+    params : {memeName: 'test-meme'},
+    query: {t1: 'celery'},
+  };
+  const result__yes_png = await requestParser(mock_request__yes_png);
+  const result__no_png = await requestParser(mock_request__no_png);
+  expect(result__yes_png).toEqual(result__no_png);
+  done();
+});
