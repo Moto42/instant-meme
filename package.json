@@ -36,7 +36,7 @@
     "README.md"
   ],
   "devDependencies": {
-    "jest": "^26.5.2",
+    "jest": "^26.5.3",
     "jest-image-snapshot": "^4.2.0",
     "middleware-supertest": "^0.8.0",
     "supertest": "^5.0.0"
