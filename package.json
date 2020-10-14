@@ -31,6 +31,8 @@
     "index.js",
     "api/memebuilder.js",
     "api/requestParser.js",
+    "randomHelpers.js",
+    "commonHandlers.js",
     "README.md"
   ],
   "devDependencies": {
