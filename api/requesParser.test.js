@@ -48,14 +48,21 @@ describe('Parses requests correctly', () => {
   test('plaintext', async (done) => {
     requestParser(mockRequest_plain)
       .then(response => {
-        expect(response).toEqual(testData);
+        expect(response).toMatchObject(testData);
         done();
       });
   });
   test('url encoded', async (done) => {
     requestParser(mockRequest_encoded)
       .then(response => {
-        expect(response).toEqual(testData);
+        expect(response).toMatchObject(testData);
+        done();
+      });
+  });
+  test('with_underscores', async (done) => {
+    requestParser(mock_request_underscores)
+      .then(response => {
+        expect(response).toMatchObject(testData);
         done();
       });
   });
@@ -72,14 +79,14 @@ test('memenames ending in .png and not are equal', async (done) => {
   };
   const result__yes_png = await requestParser(mock_request__yes_png);
   const result__no_png = await requestParser(mock_request__no_png);
-  expect(result__yes_png).toEqual(result__no_png);
+  expect(result__yes_png).toMatchObject(result__no_png);
   done();
 });
 
 test('discard extra textblocks', async (done) => {
   requestParser(mockRequest_excess_texts)
   .then(response => {
-    expect(response).toEqual(testData);
+    expect(response).toMatchObject(testData);
     done();
   });
 });
