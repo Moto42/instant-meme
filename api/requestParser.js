@@ -2,7 +2,7 @@
  * This bit parses a request and ;returns a memetemplate
  */
 
-const {stripPNG} = require('../randomHelpers');
+const {stripPNG, underscoresToSpaces} = require('../randomHelpers');
 const fs = require('fs');
 
 module.exports = async function (req) {
@@ -14,7 +14,8 @@ module.exports = async function (req) {
   for(let key of texts){
     if(req.query[key] !== undefined){
       const decodedText = decodeURIComponent( req.query[key] );
-      template.texts[key].text = decodedText;
+      const no_underscores = underscoresToSpaces(decodedText);
+      template.texts[key].text = no_underscores;
     }
   }
   return template;
