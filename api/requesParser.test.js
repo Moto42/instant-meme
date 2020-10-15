@@ -32,6 +32,17 @@ const mockRequest_encoded = {
     t1: 'watermellon%20iced%20tea',
   }
 };
+const mockRequest_excess_texts = {
+  params: {
+    memeName: 'test-meme',
+  },
+  query: {
+    t1: 'watermellon iced tea',
+    t2: 'strawberry sherbert',
+    t3: 'orange jam',
+    t4: 'eggplant sundae',
+  }
+};
 
 describe('Parses requests correctly', () => {
   test('plaintext', async (done) => {
@@ -63,4 +74,12 @@ test('memenames ending in .png and not are equal', async (done) => {
   const result__no_png = await requestParser(mock_request__no_png);
   expect(result__yes_png).toEqual(result__no_png);
   done();
+});
+
+test('discard extra textblocks', async (done) => {
+  requestParser(mockRequest_excess_texts)
+  .then(response => {
+    expect(response).toEqual(testData);
+    done();
+  });
 });

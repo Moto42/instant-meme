@@ -10,12 +10,11 @@ module.exports = async function (req) {
   const fileName = `${memeName}.json`;
   const json = await fs.promises.readFile(`instant-meme/templates/${fileName}`, 'utf-8');
   let obj = JSON.parse(json);
-  
   const texts = Object.entries(req.query).filter(e => /^t\d/.test(e[0]));
   for(let t of texts){
     const [key, value] = t;
+    if(obj.texts[key]===undefined) continue;
     obj.texts[key].text = decodeURIComponent(value);
   }
-
   return obj;
 }
