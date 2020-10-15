@@ -15,7 +15,14 @@ const testData = {
   "font": "OpenSans-Regular.ttf",
   "font_size": "30px"
 }
-
+const mock_request_underscores = {
+  params: {
+    memeName: 'test-meme',
+  },
+  query: {
+    t1: 'watermellon_iced__tea',
+  }
+};
 const mockRequest_plain = {
   params: {
     memeName: 'test-meme',
