@@ -71,6 +71,21 @@ describe('Rejects requests that do not specify a meme template', () => {
   });
 });
 
+describe('Meme requests should have open CORS headers',() => {
+  test('/', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+      .expect('Access-Control-Allow-Origin', '*');
+    done();
+  });
+  test('/testmeme', async (done) => {
+    const res = await mwsupertest(app)
+      .get('/')
+      .expect('Access-Control-Allow-Origin', '*');
+    done();
+  });
+});
+
 test('404s a missing meme', async (done) => {
   const res = await mwsupertest(app)
     .get('/notFound?t1=watermellons')
