@@ -6,6 +6,7 @@ const memeBuilder = require('./api/memebuilder');
 const commonHandlers =  require('./commonHandlers');
 
 async function memeHandler(req, res, _next) {
+  res.set('Access-Control-Allow-Origin', '*')
   const memeName = req.params['memeName'];
   if(!memeName) {
     res.status(400).json({message: 'No meme template specified'});
@@ -20,7 +21,7 @@ async function memeHandler(req, res, _next) {
       return;
     }
     const meme = await memeBuilder(template);
-    res.set('Content-Type', 'image/png')
+    res.set('Content-Type', 'image/png');
     res.send(meme);
   }
 }
