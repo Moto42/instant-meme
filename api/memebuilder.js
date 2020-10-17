@@ -30,6 +30,29 @@ function wraptext(context, text, x, y, maxwidth,fontHeight) {
   }
 }
 
+/** Writes watermark to canvas, iff  env variable INSTANT_MEME_WATERMARK
+ * 
+ * @param {CanvasRenderingContext2D} context Canvase contex to be written to.
+ * @param {String} font_family Name of the font to use when writing watermark.
+ */
+function addWatermark(context) {
+  const watermark = process.env.INSTANT_MEME_WATERMARK;
+  if(!watermark) return;
+  //get half size font.
+  const font_original = context.font;
+  const font_half_height = Number(font_original.replace(/\D/g,''))/2;
+  const font_half = font_half_height + font_original.replace(/^\d+/,'');
+  //get text postion
+  context.font = font_half;
+  const measurements = context.measureText(watermark);
+  const x = context.canvas.width - (measurements.width+5);
+  const y = context.canvas.height - (font_half_height);
+  //writing
+  context.fillText(watermark,x,y);
+  //cleanup
+  context.font = font_original;
+}
+
 /**
  * 
  * @param {TemplateData} templateData 
@@ -48,6 +71,7 @@ async function MemeBuilder(templateData){
     const {text='',x=100,y=100,h=null,w=null,maxwidth=maxwidth_default} = textData;
     wraptext(ctx,text,x,y,maxwidth,templateData.font_size);
   }
+  addWatermark(ctx);
   return canvas.toBuffer();
 }
 
