@@ -41,7 +41,7 @@ async function MemeBuilder(templateData){
   const image = await loadImage(`instant-meme/templates/${templateData.template}`);
   const canvas = createCanvas(image.naturalWidth,image.naturalHeight, 'png');
   const ctx = canvas.getContext('2d');
-  ctx.font = `${templateData.font_size} "daFont"`;
+  ctx.font = `${templateData.font_size} daFont`;
   ctx.drawImage(image,0,0);
   for(textData of Object.values(templateData.texts)) {
     maxwidth_default = textData.x ? image.naturalWidth - textData.x : image.naturalWidth - 100;
