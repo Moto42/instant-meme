@@ -46,7 +46,6 @@ async function MemeBuilder(templateData){
     maxwidth_default = textData.x ? image.naturalWidth - textData.x : image.naturalWidth - 100;
     const {text='',x=100,y=100,h=null,w=null,maxwidth=maxwidth_default} = textData;
     wraptext(ctx,text,x,y,maxwidth,templateData.font_size);
-    // ctx.fillText(text,x,y,maxwidth);
   }
   return canvas.toBuffer();
 }
