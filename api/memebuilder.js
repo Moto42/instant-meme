@@ -22,6 +22,7 @@ function wraptext(context, text, x, y, maxwidth,fontHeight) {
     else lines[lines.length] = word;
   }
   //write the lines
+  if(lines[0].length = 0) lines.shift;
   for(let index in lines){
     let line = lines[index].trim();
     [x,y,fontHeight, index] = [x,y,fontHeight, index].map(n => Number(n));
