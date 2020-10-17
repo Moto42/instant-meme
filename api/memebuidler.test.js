@@ -65,7 +65,6 @@ test('runs without crashing', async (done) => {
   await expect(()=>MemeBuilder(testData).then( ()=>done() ) ).not.toThrow();
 });
 
-
 describe('regression testing', () => {
   test('No wrapping text', async (done) => {
     MemeBuilder(testData)
@@ -79,6 +78,22 @@ describe('regression testing', () => {
   });
   test('Yes wrapping text, no maxwidth give', async (done) => {
     MemeBuilder(testData__text_wrapping__no_width)
+      .then((image)=>{ expect(image).toMatchImageSnapshot(); })
+      .then(() => { done() })
+  });
+});
+
+describe('watermarking', () =>{
+  let watermark_value;
+  beforeAll(() =>{
+    watermark_value = process.env.INSTANT_MEME_WATERMARK;
+    process.env.INSTANT_MEME_WATERMARK='wwww.WesleyWilliams.dev';
+  });
+  afterAll(() =>{
+    process.env.INSTANT_MEME_WATERMARK=watermark_value;
+  });
+  test('No wrapping text', async (done) => {
+    MemeBuilder(testData)
       .then((image)=>{ expect(image).toMatchImageSnapshot(); })
       .then(() => { done() })
   });
