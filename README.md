@@ -20,6 +20,10 @@ URL parameter immedietly following the endpoint url, and text fields by query pa
 ### Setup
 A little bit more involved.
 
+#### Optional Environmental Variables
+
+- INSTANT_MEME_WATERMARK : string, if set, will add a watermark to the lower right hand corner of the image.
+
 #### Create Assets Directory
 
 In your project's root directory, create a new directory named "instant-meme".  
